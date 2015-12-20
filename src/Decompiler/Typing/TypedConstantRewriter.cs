@@ -239,7 +239,8 @@ namespace Reko.Typing
             ImageMapSegment seg;
             if (!program.ImageMap.TryFindSegment(addr, out seg))
                 return false;
-            return (seg.Access & AccessMode.ReadWrite) == AccessMode.Read;
+            return true;// $TODO writeable string constant
+            //return (seg.Access & AccessMode.ReadWrite) == AccessMode.Read;
         }
 
         private Expression ReadNullTerminatedString(Constant c, DataType dt)
@@ -251,6 +252,8 @@ namespace Reko.Typing
         void PromoteToCString(Constant c, DataType charType)
         {
             var field = GlobalVars.Fields.AtOffset(c.ToInt32());
+            if (field == null)// $TODO check globals
+                return;
             field.DataType = StringType.NullTerminated(charType);
         }
 
