@@ -112,6 +112,10 @@
       <Project>{5C315C78-1F97-4B16-81AA-917284969DFE}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Decompiler\Decompiler.csproj">
+      <Project>{5e21c722-f9c6-4192-95ec-89fcef2acdb7}</Project>
+      <Name>Decompiler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

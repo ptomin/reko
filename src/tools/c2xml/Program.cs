@@ -31,14 +31,59 @@ namespace Reko.Tools.C2Xml
     /// This program is used to convert ANSI C header files into the 
     /// XML format that the Decompiler uses.
     /// </summary>
-    class Program
+    class Program1
     {
         static int Main(string[] args)
         {
-            return new Program().Execute(args);
+            return new Program1().Execute(args);
         }
 
         public int Execute(string []args)
+        {
+            TextReader input = Console.In;
+            TextWriter output = Console.Out;
+            if (args.Length > 2)
+            {
+                Usage();
+                return 1;
+            }
+            var inputFileName = "Blade.h";
+            //if (args.Length >= 1)
+            {
+                try
+                {                    
+                    input = new StreamReader(inputFileName/*args[0]*/);
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine("c2xml: Unable to open file {0} for reading. {1}", args[0], ex.Message);
+                    Usage();
+                    return 1;
+                }
+            }
+            //if (args.Length == 2)
+            {
+                try
+                {
+                    output = new StreamWriter("template.c"/*args[1]*/);
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine("c2xml: Unable to open file {0} for writing. {1}", args[1], ex.Message);
+                    return 1;
+                }
+            }
+            var xWriter = new XmlTextWriter(output)
+            {
+                Formatting = Formatting.Indented
+            };
+            XmlConverter c = new XmlConverter(input, output, xWriter, inputFileName);
+            c.Convert1();
+            output.Flush();
+            return 0;
+        }
+
+        public int Execute1(string[] args)
         {
             TextReader input = Console.In;
             TextWriter output = Console.Out;
