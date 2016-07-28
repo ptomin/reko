@@ -22,6 +22,7 @@ using Reko.Core.Expressions;
 using Reko.Core.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Reko.Typing
 {
@@ -35,8 +36,9 @@ namespace Reko.Typing
 		private bool insideComplexType;
 		private bool changed;
         private HashSet<DataType> visitedTypes;
- 
-		public NestedComplexTypeExtractor(TypeFactory factory, TypeStore store)
+        static private int depth;//$DEBUG: used to avoid infinite recursion
+
+        public NestedComplexTypeExtractor(TypeFactory factory, TypeStore store)
 		{
 			this.factory = factory;
 			this.store = store;
@@ -98,10 +100,16 @@ namespace Reko.Typing
             visitedTypes.Add(str);
 			if (insideComplexType)
 			{
-				changed = true;
+                if (++depth > 20)
+                {
+                    Debug.Print("*** Quitting; determine cause of recursion"); //$DEBUG
+                    return str;
+                }
+                changed = true;
 				NestedComplexTypeExtractor nctr = new NestedComplexTypeExtractor(factory, store);
 				str.Accept(nctr);
-				return CreateEquivalenceClass(str);
+                depth--;
+                return CreateEquivalenceClass(str);
 			}
 			else
 			{

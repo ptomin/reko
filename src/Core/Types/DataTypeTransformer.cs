@@ -20,6 +20,7 @@
 
 using Reko.Core.Expressions;
 using System;
+using System.Diagnostics;
 
 namespace Reko.Core.Types
 {
@@ -29,7 +30,9 @@ namespace Reko.Core.Types
 	/// </summary>
 	public abstract class DataTypeTransformer : IDataTypeVisitor<DataType>
 	{
-		public virtual DataType VisitArray(ArrayType at)
+        private int depth;//$DEBUG: used to avoid infinite recursion
+
+        public virtual DataType VisitArray(ArrayType at)
 		{
 			at.ElementType = at.ElementType.Accept(this);
 			return at;
@@ -82,11 +85,17 @@ namespace Reko.Core.Types
             // Do not transform user-defined types
             if (str.UserDefined)
                 return str;
-			foreach (StructureField field in str.Fields)
+            if (++depth > 20)
+            {
+                Debug.Print("*** Quitting; determine cause of recursion"); //$DEBUG
+                return str;
+            }
+            foreach (StructureField field in str.Fields)
 			{
 				field.DataType = field.DataType.Accept(this);
 			}
-			return str;
+            depth--;
+            return str;
 		}
 
         public virtual DataType VisitMemberPointer(MemberPointer memptr)
