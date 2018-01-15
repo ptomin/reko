@@ -46,7 +46,16 @@ namespace Reko.Structure
                 var s = stm.Instruction.Accept(this);
                 if (s != null)
                     stms.Add(s);
+                //else
+                    //break;
             }
+            /*if (b.Succ.Where(s => (s != b.Procedure.ExitBlock)).Count() == 1 && regType == RegionType.Condition)
+                regType = RegionType.Linear;
+            else if (b.Succ.Where(s => (s != b.Procedure.ExitBlock)).Count() > 1 && regType == RegionType.Linear)
+            {
+                regType = RegionType.Condition;
+                exp = exp ?? new Identifier("<undefined>", VoidType.Instance, null);
+            }*/
             var region = new Region(b, stms)
             {
                 Type = regType,

@@ -5807,7 +5807,7 @@ T_1262: (in h_127 : byte)
   Class: Eq_1262
   DataType: byte
   OrigDataType: byte
-T_1263: (in PHI(a_23, a, a) : byte)
+T_1263: (in PHI(a_23, a) : byte)
   Class: Eq_1105
   DataType: byte
   OrigDataType: 
@@ -5819,7 +5819,7 @@ T_1265: (in a_5 : byte)
   Class: Eq_1105
   DataType: byte
   OrigDataType: byte
-T_1266: (in PHI(c_21, c, c) : byte)
+T_1266: (in PHI(c_21, c) : byte)
   Class: Eq_490
   DataType: uint8
   OrigDataType: 
@@ -5831,7 +5831,7 @@ T_1268: (in c_6 : byte)
   Class: Eq_490
   DataType: uint8
   OrigDataType: byte
-T_1269: (in PHI(b_18, b, b) : byte)
+T_1269: (in PHI(b_18, b) : byte)
   Class: Eq_503
   DataType: cu8
   OrigDataType: 
@@ -5843,7 +5843,7 @@ T_1271: (in b_7 : byte)
   Class: Eq_503
   DataType: cu8
   OrigDataType: byte
-T_1272: (in PHI(l_15, l, l) : byte)
+T_1272: (in PHI(l_15, l) : byte)
   Class: Eq_517
   DataType: cu8
   OrigDataType: 
@@ -5855,7 +5855,7 @@ T_1274: (in l_8 : byte)
   Class: Eq_517
   DataType: cu8
   OrigDataType: byte
-T_1275: (in PHI(h_12, h, h) : byte)
+T_1275: (in PHI(h_12, h) : byte)
   Class: Eq_531
   DataType: uint8
   OrigDataType: 

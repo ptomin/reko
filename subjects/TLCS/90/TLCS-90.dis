@@ -853,11 +853,11 @@ fn03B2_entry:
 // SymbolicIn: sp:fp
 
 l03B2:
-	a_5 = PHI(a_23, a, a)
-	c_6 = PHI(c_21, c, c)
-	b_7 = PHI(b_18, b, b)
-	l_8 = PHI(l_15, l, l)
-	h_9 = PHI(h_12, h, h)
+	a_5 = PHI(a_23, a)
+	c_6 = PHI(c_21, c)
+	b_7 = PHI(b_18, b)
+	l_8 = PHI(l_15, l)
+	h_9 = PHI(h_12, h)
 	sp_11 = v3
 	h_12 = h_9 >>u 1
 	SZXC_13 = cond(h_12)

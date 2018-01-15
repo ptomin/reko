@@ -37,6 +37,7 @@ using Reko.Core.Assemblers;
 using System.Threading;
 using Reko.Core.Configuration;
 using System.Diagnostics;
+using Reko.Core.Code;
 
 namespace Reko
 {
@@ -419,6 +420,7 @@ namespace Reko
                 eventListener.ShowStatus("Rewriting reachable machine code.");
                 scanner = CreateScanner(program);
                 scanner.ScanImage();
+                CheckCFG(program);
                 eventListener.ShowStatus("Finished rewriting reachable machine code.");
             }
             finally
@@ -426,6 +428,26 @@ namespace Reko
                 eventListener.ShowStatus("Writing .asm and .dis files.");
                 host.WriteDisassembly(program, w => DumpAssembler(program, w));
                 host.WriteIntermediateCode(program, w => EmitProgram(program, null, w));
+            }
+        }
+
+        private void CheckCFG(Program program)
+        {
+            foreach(var proc in program.Procedures.Values)
+            {
+                foreach (var block in proc.ControlGraph.Blocks)
+                {
+                    var lastIntruction = (block.Statements.Count == 0) ?
+                        null : 
+                        block.Statements.Last.Instruction;
+                    if (block.Succ.Count >= 2 &&
+                        !(lastIntruction is Branch) &&
+                        !(lastIntruction is SwitchInstruction))
+                    {
+                        while (block.Succ.Count >= 2)
+                            proc.ControlGraph.RemoveEdge(block, block.ElseBlock);
+                    }
+                }
             }
         }
 
