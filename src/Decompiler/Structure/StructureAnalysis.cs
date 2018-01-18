@@ -316,12 +316,7 @@ namespace Reko.Structure
                 if (CoalesceTailRegion(n, regionGraph.Nodes))
                     return true;
             }
-            foreach (var n in postOrder)
-            {
-                if (LastResort(n))
-                    return true;
-            }
-            return false;
+            return LastResort(postOrder.ToHashSet());
         }
 
         /// <summary>
@@ -1427,53 +1422,6 @@ refinement on the loop body, which we describe below.
         /// tree. By removing them, we leave edges that reflect more
         /// structure because they reflect a dominator relationship
         /// </summary>
-        private bool LastResort(Region n)
-        {
-            VirtualEdge vEdge = null;
-
-            foreach (var s in regionGraph.Successors(n))
-            {
-                if (!doms.DominatesStrictly(n, s) && 
-                    !doms.DominatesStrictly(s, n))
-                {
-                    vEdge = new VirtualEdge(n, s, VirtualEdgeType.Goto);
-                    break;
-                }
-            }
-            if (vEdge == null)
-            {
-                foreach (var s in regionGraph.Successors(n))
-                {
-                    if (!doms.DominatesStrictly(n, s))
-                    {
-                        vEdge = new VirtualEdge(n, s, VirtualEdgeType.Goto);
-                        break;
-                    }
-                }
-            }
-            if (vEdge == null)
-            {
-                foreach (var p in regionGraph.Predecessors(n))
-                {
-                    if (!doms.DominatesStrictly(p, n))
-                    {
-                        vEdge = new VirtualEdge(p, n, VirtualEdgeType.Goto);
-                        break;
-                    }
-                }
-            }
-            if (vEdge != null)
-            {
-                VirtualizeEdge(vEdge);
-                return true;
-            }
-            else 
-            {
-                // Whoa, we're in trouble now....
-                return false;
-            }
-        }
-
         private bool LastResort(ISet<Region> regions)
         {
             var vEdge = FindLastResortEdge( regions);

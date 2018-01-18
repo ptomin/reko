@@ -238,461 +238,461 @@ word64 print_pixel(byte dil, Eq_171 * fs)
 void main(Eq_276 * rsi, word32 edi, word64 r13, Eq_279 * fs)
 {
 	ptr64 rbp_123 = fp - 0x08;
-	if (edi != 0x04)
+	if (edi == 0x04)
 	{
-		fwrite(&globals->v401A70, 0x01, 0x27, globals->ptr602100);
-		goto l000000000040175D;
-	}
-	char * rax_68 = rsi->ptr0008;
-	uint64 rax_71 = DPB(rax_68, atol(rax_68), 0);
-	char * rax_75 = rsi->ptr0010;
-	uint64 rax_78 = DPB(rax_75, atol(rax_75), 0);
-	FILE * rax_85 = fopen(rsi->ptr0018, "rb");
-	if (rax_85 == null)
-	{
-		fprintf(globals->ptr602100, "pngpixel: %s: could not open file\n", rsi->ptr0018);
-		goto l000000000040175D;
-	}
-	word64 rsp_122;
-	byte SCZO_124;
-	word32 edi_125;
-	word64 rsi_126;
-	word64 rax_127;
-	word32 eax_129;
-	byte SZO_130;
-	byte C_131;
-	byte Z_132;
-	word64 rdi_133;
-	word32 esi_134;
-	word32 ecx_135;
-	word64 rcx_136;
-	word32 edx_137;
-	word64 rdx_138;
-	word64 r13_139;
-	word64 r9_140;
-	word64 r8_141;
-	byte SO_142;
-	byte cl_143;
-	byte al_144;
-	byte dil_145;
-	png_create_read_struct();
-	if (rax_127 == 0x00)
-	{
-		fwrite(&globals->v401A18, 0x01, 0x2E, globals->ptr602100);
-		goto l000000000040175D;
-	}
-	word64 rsp_153;
-	word64 rbp_154;
-	byte SCZO_155;
-	word32 edi_156;
-	word64 rsi_157;
-	word64 rax_158;
-	struct Eq_382 * fs_159;
-	word32 eax_160;
-	byte SZO_161;
-	byte C_162;
-	byte Z_163;
-	word64 rdi_164;
-	word32 esi_165;
-	word32 ecx_166;
-	word64 rcx_167;
-	word32 edx_168;
-	word64 rdx_169;
-	word64 r13_170;
-	word64 r9_171;
-	word64 r8_172;
-	byte SO_173;
-	byte cl_174;
-	byte al_175;
-	byte dil_176;
-	png_create_info_struct();
-	if (rax_158 != 0x00)
-	{
-		word64 rsp_258;
-		word64 rbp_259;
-		byte SCZO_260;
-		word32 edi_261;
-		word64 rsi_262;
-		word64 rax_263;
-		struct Eq_418 * fs_264;
-		word32 eax_265;
-		byte SZO_266;
-		byte C_267;
-		byte Z_268;
-		word64 rdi_269;
-		word32 esi_270;
-		word32 ecx_271;
-		word64 rcx_272;
-		word32 edx_273;
-		word64 rdx_274;
-		word64 r13_275;
-		word64 r9_276;
-		word64 r8_277;
-		byte SO_278;
-		byte cl_279;
-		byte al_280;
-		byte dil_281;
-		png_init_io();
-		word64 rsp_286;
-		word64 rbp_287;
-		byte SCZO_288;
-		word32 edi_289;
-		word64 rsi_290;
-		word64 rax_291;
-		struct Eq_443 * fs_292;
-		word32 eax_293;
-		byte SZO_294;
-		byte C_295;
-		byte Z_296;
-		word64 rdi_297;
-		word32 esi_298;
-		word32 ecx_299;
-		word64 rcx_300;
-		word32 edx_301;
-		word64 rdx_302;
-		word64 r13_303;
-		word64 r9_304;
-		word64 r8_305;
-		byte SO_306;
-		byte cl_307;
-		byte al_308;
-		byte dil_309;
-		png_read_info();
-		word64 rsp_314;
-		word64 rbp_315;
-		byte SCZO_316;
-		word32 edi_317;
-		word64 rsi_318;
-		word64 rax_319;
-		struct Eq_468 * fs_320;
-		word32 eax_321;
-		byte SZO_322;
-		byte C_323;
-		byte Z_324;
-		word64 rdi_325;
-		word32 esi_326;
-		word32 ecx_327;
-		word64 rcx_328;
-		word32 edx_329;
-		word64 rdx_330;
-		word64 r13_331;
-		word64 r9_332;
-		word64 r8_333;
-		byte SO_334;
-		byte cl_335;
-		byte al_336;
-		byte dil_337;
-		png_get_rowbytes();
-		word64 rsp_342;
-		word64 rbp_343;
-		byte SCZO_344;
-		word32 edi_345;
-		word64 rsi_346;
-		word64 rax_347;
-		struct Eq_493 * fs_348;
-		word32 eax_349;
-		byte SZO_350;
-		byte C_351;
-		byte Z_352;
-		word64 rdi_353;
-		word32 esi_354;
-		word32 ecx_355;
-		word64 rcx_356;
-		word32 edx_357;
-		word64 rdx_358;
-		word64 r13_359;
-		word64 r9_360;
-		word64 r8_361;
-		byte SO_362;
-		byte cl_363;
-		byte al_364;
-		byte dil_365;
-		png_malloc();
-		word64 rsp_388;
-		word64 rbp_389;
-		byte SCZO_390;
-		word32 edi_391;
-		word64 rsi_392;
-		word64 rax_393;
-		struct Eq_518 * fs_394;
-		word32 eax_395;
-		byte SZO_396;
-		byte C_397;
-		byte Z_398;
-		word64 rdi_399;
-		word32 esi_400;
-		word32 ecx_401;
-		word64 rcx_402;
-		word32 edx_403;
-		word64 rdx_404;
-		word64 r13_405;
-		word64 r9_406;
-		word64 r8_407;
-		byte SO_408;
-		byte cl_409;
-		byte al_410;
-		byte dil_411;
-		png_get_IHDR();
-		if (eax_395 != 0x00)
+		char * rax_68 = rsi->ptr0008;
+		uint64 rax_71 = DPB(rax_68, atol(rax_68), 0);
+		char * rax_75 = rsi->ptr0010;
+		uint64 rax_78 = DPB(rax_75, atol(rax_75), 0);
+		FILE * rax_85 = fopen(rsi->ptr0018, "rb");
+		if (rax_85 != null)
 		{
-			word32 eax_418 = (word32) (uint64) dwLoc78;
-			if (eax_418 != 0x00)
+			word64 rsp_122;
+			byte SCZO_124;
+			word32 edi_125;
+			word64 rsi_126;
+			word64 rax_127;
+			word32 eax_129;
+			byte SZO_130;
+			byte C_131;
+			byte Z_132;
+			word64 rdi_133;
+			word32 esi_134;
+			word32 ecx_135;
+			word64 rcx_136;
+			word32 edx_137;
+			word64 rdx_138;
+			word64 r13_139;
+			word64 r9_140;
+			word64 r8_141;
+			byte SO_142;
+			byte cl_143;
+			byte al_144;
+			byte dil_145;
+			png_create_read_struct();
+			if (rax_127 != 0x00)
 			{
-				if (eax_418 != 0x01)
+				word64 rsp_153;
+				word64 rbp_154;
+				byte SCZO_155;
+				word32 edi_156;
+				word64 rsi_157;
+				word64 rax_158;
+				struct Eq_382 * fs_159;
+				word32 eax_160;
+				byte SZO_161;
+				byte C_162;
+				byte Z_163;
+				word64 rdi_164;
+				word32 esi_165;
+				word32 ecx_166;
+				word64 rcx_167;
+				word32 edx_168;
+				word64 rdx_169;
+				word64 r13_170;
+				word64 r9_171;
+				word64 r8_172;
+				byte SO_173;
+				byte cl_174;
+				byte al_175;
+				byte dil_176;
+				png_create_info_struct();
+				if (rax_158 != 0x00)
 				{
-					word64 rsp_892;
-					word64 rbp_893;
-					byte SCZO_894;
-					word32 edi_895;
-					word64 rsi_896;
-					word64 rax_897;
-					struct Eq_581 * fs_898;
-					word32 eax_899;
-					byte SZO_900;
-					byte C_901;
-					byte Z_902;
-					word64 rdi_903;
-					word32 esi_904;
-					word32 ecx_905;
-					word64 rcx_906;
-					word32 edx_907;
-					word64 rdx_908;
-					word64 r13_909;
-					word64 r9_910;
-					word64 r8_911;
-					byte SO_912;
-					byte cl_913;
-					byte al_914;
-					byte dil_915;
+					word64 rsp_258;
+					word64 rbp_259;
+					byte SCZO_260;
+					word32 edi_261;
+					word64 rsi_262;
+					word64 rax_263;
+					struct Eq_418 * fs_264;
+					word32 eax_265;
+					byte SZO_266;
+					byte C_267;
+					byte Z_268;
+					word64 rdi_269;
+					word32 esi_270;
+					word32 ecx_271;
+					word64 rcx_272;
+					word32 edx_273;
+					word64 rdx_274;
+					word64 r13_275;
+					word64 r9_276;
+					word64 r8_277;
+					byte SO_278;
+					byte cl_279;
+					byte al_280;
+					byte dil_281;
+					png_init_io();
+					word64 rsp_286;
+					word64 rbp_287;
+					byte SCZO_288;
+					word32 edi_289;
+					word64 rsi_290;
+					word64 rax_291;
+					struct Eq_443 * fs_292;
+					word32 eax_293;
+					byte SZO_294;
+					byte C_295;
+					byte Z_296;
+					word64 rdi_297;
+					word32 esi_298;
+					word32 ecx_299;
+					word64 rcx_300;
+					word32 edx_301;
+					word64 rdx_302;
+					word64 r13_303;
+					word64 r9_304;
+					word64 r8_305;
+					byte SO_306;
+					byte cl_307;
+					byte al_308;
+					byte dil_309;
+					png_read_info();
+					word64 rsp_314;
+					word64 rbp_315;
+					byte SCZO_316;
+					word32 edi_317;
+					word64 rsi_318;
+					word64 rax_319;
+					struct Eq_468 * fs_320;
+					word32 eax_321;
+					byte SZO_322;
+					byte C_323;
+					byte Z_324;
+					word64 rdi_325;
+					word32 esi_326;
+					word32 ecx_327;
+					word64 rcx_328;
+					word32 edx_329;
+					word64 rdx_330;
+					word64 r13_331;
+					word64 r9_332;
+					word64 r8_333;
+					byte SO_334;
+					byte cl_335;
+					byte al_336;
+					byte dil_337;
+					png_get_rowbytes();
+					word64 rsp_342;
+					word64 rbp_343;
+					byte SCZO_344;
+					word32 edi_345;
+					word64 rsi_346;
+					word64 rax_347;
+					struct Eq_493 * fs_348;
+					word32 eax_349;
+					byte SZO_350;
+					byte C_351;
+					byte Z_352;
+					word64 rdi_353;
+					word32 esi_354;
+					word32 ecx_355;
+					word64 rcx_356;
+					word32 edx_357;
+					word64 rdx_358;
+					word64 r13_359;
+					word64 r9_360;
+					word64 r8_361;
+					byte SO_362;
+					byte cl_363;
+					byte al_364;
+					byte dil_365;
+					png_malloc();
+					word64 rsp_388;
+					word64 rbp_389;
+					byte SCZO_390;
+					word32 edi_391;
+					word64 rsi_392;
+					word64 rax_393;
+					struct Eq_518 * fs_394;
+					word32 eax_395;
+					byte SZO_396;
+					byte C_397;
+					byte Z_398;
+					word64 rdi_399;
+					word32 esi_400;
+					word32 ecx_401;
+					word64 rcx_402;
+					word32 edx_403;
+					word64 rdx_404;
+					word64 r13_405;
+					word64 r9_406;
+					word64 r8_407;
+					byte SO_408;
+					byte cl_409;
+					byte al_410;
+					byte dil_411;
+					png_get_IHDR();
+					if (eax_395 != 0x00)
+					{
+						word32 eax_418 = (word32) (uint64) dwLoc78;
+						if (eax_418 != 0x00)
+						{
+							if (eax_418 != 0x01)
+							{
+								word64 rsp_892;
+								word64 rbp_893;
+								byte SCZO_894;
+								word32 edi_895;
+								word64 rsi_896;
+								word64 rax_897;
+								struct Eq_581 * fs_898;
+								word32 eax_899;
+								byte SZO_900;
+								byte C_901;
+								byte Z_902;
+								word64 rdi_903;
+								word32 esi_904;
+								word32 ecx_905;
+								word64 rcx_906;
+								word32 edx_907;
+								word64 rdx_908;
+								word64 r13_909;
+								word64 r9_910;
+								word64 r8_911;
+								byte SO_912;
+								byte cl_913;
+								byte al_914;
+								byte dil_915;
+								png_error();
+							}
+							else
+								dwLoc6C = 0x07;
+						}
+						else
+							dwLoc6C = 0x01;
+						word64 rsp_426;
+						byte SCZO_428;
+						word32 edi_429;
+						word64 rsi_430;
+						word64 rax_431;
+						struct Eq_612 * fs_432;
+						word32 eax_433;
+						byte SZO_434;
+						byte C_435;
+						byte Z_436;
+						word64 rdi_437;
+						word32 esi_438;
+						word32 ecx_439;
+						word64 rcx_440;
+						word32 edx_441;
+						word64 rdx_442;
+						word64 r13_443;
+						word64 r9_444;
+						word64 r8_445;
+						byte SO_446;
+						byte cl_447;
+						byte al_448;
+						byte dil_449;
+						ptr64 rbp_427;
+						png_start_read_image();
+						int32 dwLoc68_450 = 0x00;
+						while (true)
+						{
+							int32 eax_480 = (word32) (uint64) dwLoc68_450;
+							if (eax_480 >= dwLoc6C)
+								break;
+							word32 dwLoc5C_588;
+							word32 dwLoc58_587;
+							word32 dwLoc64_586;
+							word32 dwLoc60_585;
+							if ((word32) (uint64) dwLoc78 == 0x01)
+							{
+								word32 eax_707;
+								if (dwLoc68_450 > 0x01)
+									eax_707 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) (0x01 << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x07 - dwLoc68_450)) >> 0x01))))) - 0x01);
+								else
+									eax_707 = 0x07;
+								word32 eax_745;
+								uint32 edx_741 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) (eax_707 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450))) & 0x01)) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) + 0x01)) >> 0x01)))))))))))) & 0x07))) + (word32) ((uint64) dwLoc88));
+								if (dwLoc68_450 > 0x01)
+									eax_745 = (word32) (uint64) ((word32) (uint64) (0x07 - dwLoc68_450) >> 0x01);
+								else
+									eax_745 = 0x03;
+								if ((word32) (uint64) (word32) (uint64) (edx_741 >> (byte) ((uint64) eax_745)) == 0x00)
+									goto l000000000040166F;
+								word32 eax_830;
+								dwLoc60_585 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) (uint64) dwLoc68_450 & 0x01) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) + 0x01)) >> 0x01))))))))) & 0x07);
+								dwLoc64_586 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) ((word32) (uint64) ((word32) (uint64) dwLoc68_450 & 0x01) == 0x00) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) dwLoc68_450) >> 0x01))))))))) & 0x07);
+								dwLoc58_587 = (word32) (uint64) (word32) (uint64) (0x01 << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x07 - dwLoc68_450)) >> 0x01)))));
+								if (dwLoc68_450 > 0x02)
+									eax_830 = (word32) (uint64) (word32) (uint64) (0x08 >> (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) - 0x01)) >> 0x01)))));
+								else
+									eax_830 = 0x08;
+								dwLoc5C_588 = eax_830;
+							}
+							else
+							{
+								dwLoc60_585 = 0x00;
+								dwLoc64_586 = 0x00;
+								dwLoc58_587 = 0x01;
+								dwLoc5C_588 = 0x01;
+							}
+							uint32 dwLoc54_603 = (word32) (uint64) dwLoc64_586;
+							while (dwLoc54_603 < (word32) ((uint64) dwLoc84))
+							{
+								int32 eax_633 = puts("png_read_row");
+								word64 rsp_639;
+								byte SCZO_641;
+								word32 edi_642;
+								word64 rsi_643;
+								word64 rax_644;
+								struct Eq_171 * fs_645;
+								word32 eax_646;
+								byte SZO_647;
+								byte C_648;
+								byte Z_649;
+								word64 rdi_650;
+								word32 esi_651;
+								word32 ecx_652;
+								word64 rcx_653;
+								word32 edx_654;
+								word64 rdx_655;
+								word64 r13_656;
+								word64 r9_657;
+								word64 r8_658;
+								byte SO_659;
+								byte cl_660;
+								byte al_661;
+								byte dil_662;
+								png_read_row();
+								if ((uint64) dwLoc54_603 == rax_78)
+								{
+									uint32 dwLoc50_677 = (word32) (uint64) dwLoc60_585;
+									while (dwLoc50_677 < (word32) ((uint64) dwLoc88))
+									{
+										if ((uint64) dwLoc50_677 == rax_71)
+										{
+											rbp_427 = print_pixel((byte) rax_127, fs_645);
+											goto l000000000040167F;
+										}
+										dwLoc50_677 = dwLoc50_677 + (word32) ((uint64) dwLoc58_587);
+									}
+								}
+								dwLoc54_603 = dwLoc54_603 + (word32) ((uint64) dwLoc5C_588);
+							}
+l000000000040166F:
+							dwLoc68_450 = dwLoc68_450 + 0x01;
+						}
+l000000000040167F:
+						*(rbp_427 - 0x40) = 0x00;
+						word64 rsp_496;
+						word64 rbp_497;
+						byte SCZO_498;
+						word32 edi_499;
+						word64 rsi_500;
+						word64 rax_501;
+						struct Eq_653 * fs_502;
+						word32 eax_503;
+						byte SZO_504;
+						byte C_505;
+						byte Z_506;
+						word64 rdi_507;
+						word32 esi_508;
+						word32 ecx_509;
+						word64 rcx_510;
+						word32 edx_511;
+						word64 rdx_512;
+						word64 r13_513;
+						word64 r9_514;
+						word64 r8_515;
+						byte SO_516;
+						byte cl_517;
+						byte al_518;
+						byte dil_519;
+						png_free();
+						word64 rsp_524;
+						word64 rbp_525;
+						byte SCZO_526;
+						word32 edi_527;
+						word64 rsi_528;
+						word64 rax_529;
+						struct Eq_678 * fs_530;
+						word32 eax_531;
+						byte SZO_532;
+						byte C_533;
+						byte Z_534;
+						word64 rdi_535;
+						word32 esi_536;
+						word32 ecx_537;
+						word64 rcx_538;
+						word32 edx_539;
+						word64 rdx_540;
+						word64 r13_541;
+						word64 r9_542;
+						word64 r8_543;
+						byte SO_544;
+						byte cl_545;
+						byte al_546;
+						byte dil_547;
+						png_destroy_info_struct();
+						goto l00000000004016DE;
+					}
+					word64 rsp_921;
+					word64 rbp_922;
+					byte SCZO_923;
+					word32 edi_924;
+					word64 rsi_925;
+					word64 rax_926;
+					struct Eq_545 * fs_927;
+					word32 eax_928;
+					byte SZO_929;
+					byte C_930;
+					byte Z_931;
+					word64 rdi_932;
+					word32 esi_933;
+					word32 ecx_934;
+					word64 rcx_935;
+					word32 edx_936;
+					word64 rdx_937;
+					word64 r13_938;
+					word64 r9_939;
+					word64 r8_940;
+					byte SO_941;
+					byte cl_942;
+					byte al_943;
+					byte dil_944;
 					png_error();
 				}
-				else
-					dwLoc6C = 0x07;
-			}
-			else
-				dwLoc6C = 0x01;
-			word64 rsp_426;
-			byte SCZO_428;
-			word32 edi_429;
-			word64 rsi_430;
-			word64 rax_431;
-			struct Eq_612 * fs_432;
-			word32 eax_433;
-			byte SZO_434;
-			byte C_435;
-			byte Z_436;
-			word64 rdi_437;
-			word32 esi_438;
-			word32 ecx_439;
-			word64 rcx_440;
-			word32 edx_441;
-			word64 rdx_442;
-			word64 r13_443;
-			word64 r9_444;
-			word64 r8_445;
-			byte SO_446;
-			byte cl_447;
-			byte al_448;
-			byte dil_449;
-			ptr64 rbp_427;
-			png_start_read_image();
-			int32 dwLoc68_450 = 0x00;
-			while (true)
-			{
-				int32 eax_480 = (word32) (uint64) dwLoc68_450;
-				if (eax_480 >= dwLoc6C)
-					break;
-				word32 dwLoc5C_588;
-				word32 dwLoc58_587;
-				word32 dwLoc64_586;
-				word32 dwLoc60_585;
-				if ((word32) (uint64) dwLoc78 == 0x01)
-				{
-					word32 eax_707;
-					if (dwLoc68_450 > 0x01)
-						eax_707 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) (0x01 << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x07 - dwLoc68_450)) >> 0x01))))) - 0x01);
-					else
-						eax_707 = 0x07;
-					word32 eax_745;
-					uint32 edx_741 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) (eax_707 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450))) & 0x01)) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) + 0x01)) >> 0x01)))))))))))) & 0x07))) + (word32) ((uint64) dwLoc88));
-					if (dwLoc68_450 > 0x01)
-						eax_745 = (word32) (uint64) ((word32) (uint64) (0x07 - dwLoc68_450) >> 0x01);
-					else
-						eax_745 = 0x03;
-					if ((word32) (uint64) (word32) (uint64) (edx_741 >> (byte) ((uint64) eax_745)) == 0x00)
-						goto l000000000040166F;
-					word32 eax_830;
-					dwLoc60_585 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) (uint64) dwLoc68_450 & 0x01) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) + 0x01)) >> 0x01))))))))) & 0x07);
-					dwLoc64_586 = (word32) (uint64) ((word32) (uint64) (word32) (uint64) ((word32) ((word32) (uint64) ((word32) (uint64) dwLoc68_450 & 0x01) == 0x00) << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x03 - (word32) ((uint64) ((word32) ((uint64) dwLoc68_450) >> 0x01))))))))) & 0x07);
-					dwLoc58_587 = (word32) (uint64) (word32) (uint64) (0x01 << (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) (0x07 - dwLoc68_450)) >> 0x01)))));
-					if (dwLoc68_450 > 0x02)
-						eax_830 = (word32) (uint64) (word32) (uint64) (0x08 >> (byte) ((uint64) ((word32) ((uint64) ((word32) ((uint64) ((word32) ((uint64) dwLoc68_450) - 0x01)) >> 0x01)))));
-					else
-						eax_830 = 0x08;
-					dwLoc5C_588 = eax_830;
-				}
-				else
-				{
-					dwLoc60_585 = 0x00;
-					dwLoc64_586 = 0x00;
-					dwLoc58_587 = 0x01;
-					dwLoc5C_588 = 0x01;
-				}
-				uint32 dwLoc54_603 = (word32) (uint64) dwLoc64_586;
-				while (dwLoc54_603 < (word32) ((uint64) dwLoc84))
-				{
-					int32 eax_633 = puts("png_read_row");
-					word64 rsp_639;
-					byte SCZO_641;
-					word32 edi_642;
-					word64 rsi_643;
-					word64 rax_644;
-					struct Eq_171 * fs_645;
-					word32 eax_646;
-					byte SZO_647;
-					byte C_648;
-					byte Z_649;
-					word64 rdi_650;
-					word32 esi_651;
-					word32 ecx_652;
-					word64 rcx_653;
-					word32 edx_654;
-					word64 rdx_655;
-					word64 r13_656;
-					word64 r9_657;
-					word64 r8_658;
-					byte SO_659;
-					byte cl_660;
-					byte al_661;
-					byte dil_662;
-					png_read_row();
-					if ((uint64) dwLoc54_603 == rax_78)
-					{
-						uint32 dwLoc50_677 = (word32) (uint64) dwLoc60_585;
-						while (dwLoc50_677 < (word32) ((uint64) dwLoc88))
-						{
-							if ((uint64) dwLoc50_677 == rax_71)
-							{
-								rbp_427 = print_pixel((byte) rax_127, fs_645);
-								goto l000000000040167F;
-							}
-							dwLoc50_677 = dwLoc50_677 + (word32) ((uint64) dwLoc58_587);
-						}
-					}
-					dwLoc54_603 = dwLoc54_603 + (word32) ((uint64) dwLoc5C_588);
-				}
-l000000000040166F:
-				dwLoc68_450 = dwLoc68_450 + 0x01;
-			}
-l000000000040167F:
-			*(rbp_427 - 0x40) = 0x00;
-			word64 rsp_496;
-			word64 rbp_497;
-			byte SCZO_498;
-			word32 edi_499;
-			word64 rsi_500;
-			word64 rax_501;
-			struct Eq_653 * fs_502;
-			word32 eax_503;
-			byte SZO_504;
-			byte C_505;
-			byte Z_506;
-			word64 rdi_507;
-			word32 esi_508;
-			word32 ecx_509;
-			word64 rcx_510;
-			word32 edx_511;
-			word64 rdx_512;
-			word64 r13_513;
-			word64 r9_514;
-			word64 r8_515;
-			byte SO_516;
-			byte cl_517;
-			byte al_518;
-			byte dil_519;
-			png_free();
-			word64 rsp_524;
-			word64 rbp_525;
-			byte SCZO_526;
-			word32 edi_527;
-			word64 rsi_528;
-			word64 rax_529;
-			struct Eq_678 * fs_530;
-			word32 eax_531;
-			byte SZO_532;
-			byte C_533;
-			byte Z_534;
-			word64 rdi_535;
-			word32 esi_536;
-			word32 ecx_537;
-			word64 rcx_538;
-			word32 edx_539;
-			word64 rdx_540;
-			word64 r13_541;
-			word64 r9_542;
-			word64 r8_543;
-			byte SO_544;
-			byte cl_545;
-			byte al_546;
-			byte dil_547;
-			png_destroy_info_struct();
+				fwrite(&globals->v4019E8, 0x01, 44, globals->ptr602100);
 l00000000004016DE:
-			word64 rsp_201;
-			byte SCZO_203;
-			word32 edi_204;
-			word64 rsi_205;
-			word64 rax_206;
-			word32 eax_208;
-			byte SZO_209;
-			byte C_210;
-			byte Z_211;
-			word64 rdi_212;
-			word32 esi_213;
-			word32 ecx_214;
-			word64 rcx_215;
-			word32 edx_216;
-			word64 rdx_217;
-			word64 r13_218;
-			word64 r9_219;
-			word64 r8_220;
-			byte SO_221;
-			byte cl_222;
-			byte al_223;
-			byte dil_224;
-			png_destroy_read_struct();
-l000000000040175D:
-			if ((*(rbp_123 - 0x08) ^ fs->qw0028) == 0x00)
-				return;
-			__stack_chk_fail();
+				word64 rsp_201;
+				byte SCZO_203;
+				word32 edi_204;
+				word64 rsi_205;
+				word64 rax_206;
+				word32 eax_208;
+				byte SZO_209;
+				byte C_210;
+				byte Z_211;
+				word64 rdi_212;
+				word32 esi_213;
+				word32 ecx_214;
+				word64 rcx_215;
+				word32 edx_216;
+				word64 rdx_217;
+				word64 r13_218;
+				word64 r9_219;
+				word64 r8_220;
+				byte SO_221;
+				byte cl_222;
+				byte al_223;
+				byte dil_224;
+				png_destroy_read_struct();
+				goto l000000000040175D;
+			}
+			fwrite(&globals->v401A18, 0x01, 0x2E, globals->ptr602100);
 		}
-		word64 rsp_921;
-		word64 rbp_922;
-		byte SCZO_923;
-		word32 edi_924;
-		word64 rsi_925;
-		word64 rax_926;
-		struct Eq_545 * fs_927;
-		word32 eax_928;
-		byte SZO_929;
-		byte C_930;
-		byte Z_931;
-		word64 rdi_932;
-		word32 esi_933;
-		word32 ecx_934;
-		word64 rcx_935;
-		word32 edx_936;
-		word64 rdx_937;
-		word64 r13_938;
-		word64 r9_939;
-		word64 r8_940;
-		byte SO_941;
-		byte cl_942;
-		byte al_943;
-		byte dil_944;
-		png_error();
+		else
+			fprintf(globals->ptr602100, "pngpixel: %s: could not open file\n", rsi->ptr0018);
 	}
-	fwrite(&globals->v4019E8, 0x01, 44, globals->ptr602100);
-	goto l00000000004016DE;
+	else
+		fwrite(&globals->v401A70, 0x01, 0x27, globals->ptr602100);
+l000000000040175D:
+	if ((*(rbp_123 - 0x08) ^ fs->qw0028) == 0x00)
+		return;
+	__stack_chk_fail();
 }
 
 // 0000000000401780: void __libc_csu_init(Register word32 edi)

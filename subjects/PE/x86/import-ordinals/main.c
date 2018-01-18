@@ -344,18 +344,18 @@ Eq_609 * fn0040153F(word32 ebx, ptr32 esi, ptr32 edi, ptr32 & ebxOut, ptr32 & es
 			{
 				*(ebp_10 - 0x04) = ~0x01;
 				eax_31 = (struct Eq_609 *) DPB(eax_15, 0x01, 0);
-l004015C3:
-				word32 esi_37;
-				word32 edi_38;
-				word32 ebx_39;
-				*ebxOut = fn004019C6(ebp_10, 0x08, dwArg00, dwArg04, dwArg08, dwArg0C, out esi_37, out edi_38);
-				return eax_31;
+				goto l004015C3;
 			}
 		}
 	}
 	*(ebp_10 - 0x04) = ~0x01;
 	eax_31 = (struct Eq_609 *) DPB(eax_15, 0x00, 0);
-	goto l004015C3;
+l004015C3:
+	word32 esi_37;
+	word32 edi_38;
+	word32 ebx_39;
+	*ebxOut = fn004019C6(ebp_10, 0x08, dwArg00, dwArg04, dwArg08, dwArg0C, out esi_37, out edi_38);
+	return eax_31;
 }
 
 // 004015C9: void fn004015C9(Stack byte bArg04)
