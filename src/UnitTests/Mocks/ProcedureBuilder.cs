@@ -1,6 +1,6 @@
 #region License
 /* 
- * Copyright (C) 1999-2018 John Källén.
+ * Copyright (C) 1999-2018 John KÃ¤llÃ©n.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -223,7 +223,12 @@ namespace Reko.UnitTests.Mocks
             return Block.Statements.Last;
         }
 
-        public void AddUseToExitBlock(Identifier id)
+        public virtual void AddDefToEntryBlock(Identifier id)
+        {
+            Procedure.EntryBlock.Statements.Add(0, new DefInstruction(id));
+        }
+
+        public virtual void AddUseToExitBlock(Identifier id)
         {
             Procedure.ExitBlock.Statements.Add(0, new UseInstruction(id));
         }
