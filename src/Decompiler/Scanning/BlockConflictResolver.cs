@@ -50,6 +50,7 @@ namespace Reko.Scanning
         private DiGraph<RtlBlock> blocks;
         private Func<Address, bool> isAddressValid;
         private HashSet<Tuple<RtlBlock, RtlBlock>> conflicts;
+        private Dictionary<RtlBlock, Address> truncatedBlocks;
 
         public BlockConflictResolver(
             Program program,
@@ -63,6 +64,7 @@ namespace Reko.Scanning
             this.blocks = sr.ICFG;
             this.isAddressValid = isAddressValid;
             this.conflicts = BuildConflictGraph(blocks.Nodes);
+            this.truncatedBlocks = new Dictionary<RtlBlock, Address>();
         }
 
         /// <summary>
@@ -86,6 +88,36 @@ namespace Reko.Scanning
             RemoveBlocksWithFewSuccessors();
             Dump("After few successor removal");
             RemoveConflictsRandomly();
+            foreach (var kv in truncatedBlocks)
+            {
+                TruncateBlock(kv.Key, kv.Value);
+            }
+        }
+
+        private void TruncateBlock(RtlBlock b, Address startAddr)
+        {
+            if (!blocks.Nodes.Contains(b))
+                return;
+            var remainingInstrs = b.Instructions
+                .Where(i => i.Address >= startAddr);
+            var removingInstrs = b.Instructions
+                .Where(i => i.Address < startAddr);
+            var addr = remainingInstrs.First().Address;
+            var name = program.NamingPolicy.BlockName(addr);
+            var newBlock = new RtlBlock(addr, name)
+            {
+                Instructions = remainingInstrs.ToList()
+            };
+            blocks.AddNode(newBlock);
+            foreach (var succ in blocks.Successors(b))
+            {
+                blocks.AddEdge(newBlock, succ);
+            }
+            blocks.RemoveNode(b);
+            foreach (var i in removingInstrs)
+            {
+                RemoveDirectlyCalledAddress(i);
+            }
         }
 
         private void Dump(string message)
@@ -182,18 +214,36 @@ namespace Reko.Scanning
             foreach (var cc in
                 (from c in conflicts
                  where nodes.Contains(c.Item1) && valid.Contains(c.Item2)
-                 select c.Item1))
+                 select c))
             {
-                nodes.Remove(cc);
-                RemoveBlockFromGraph(cc);
+                nodes.Remove(cc.Item1);
+                ResolveBlockConfict(cc.Item1, cc.Item2);
             }
             foreach (var cc in 
                 (from c in conflicts
                  where nodes.Contains(c.Item2) && valid.Contains(c.Item1)
-                 select c.Item2))
+                 select c))
             {
-                nodes.Remove(cc);
-                RemoveBlockFromGraph(cc);
+                nodes.Remove(cc.Item2);
+                ResolveBlockConfict(cc.Item2, cc.Item1);
+            }
+        }
+
+        private void ResolveBlockConfict(RtlBlock discarding, RtlBlock remaining)
+        {
+            var endAddr = remaining.GetEndAddress();
+            var lastInstr = discarding.Instructions.Last();
+            // We should not remove whole block if
+            // there are instructions which are not overlapped
+            // with remaining block
+            if (lastInstr.Address >= endAddr)
+            {
+                truncatedBlocks[discarding] = endAddr;
+            }
+            else
+            {
+                RemoveBlockFromGraph(discarding);
+                truncatedBlocks.Remove(discarding);
             }
         }
 
@@ -254,7 +304,7 @@ namespace Reko.Scanning
                 if (blocks.Nodes.Contains(conflict.Item1) &&
                     blocks.Nodes.Contains(conflict.Item2))
                 {
-                    RemoveBlockFromGraph(conflict.Item2);
+                    ResolveBlockConfict(conflict.Item2, conflict.Item1);
                 }
             }
         }
@@ -274,7 +324,7 @@ namespace Reko.Scanning
                     var uCount = blocks.Successors(conflict.Item1).Count;
                     var vCount = blocks.Successors(conflict.Item2).Count;
                     if (uCount < vCount)
-                        RemoveBlockFromGraph(conflict.Item1);
+                        ResolveBlockConfict(conflict.Item1, conflict.Item2);
                 }
             }
         }
@@ -288,13 +338,20 @@ namespace Reko.Scanning
                 var vCount = GetAncestors(conflict.Item2).Count;
                 if (uCount < vCount)
                 {
-                    RemoveBlockFromGraph(conflict.Item1);
+                    ResolveBlockConfict(conflict.Item1, conflict.Item2);
                 }
                 else if (uCount > vCount)
                 {
-                    RemoveBlockFromGraph(conflict.Item2);
+                    ResolveBlockConfict(conflict.Item2, conflict.Item1);
                 }
             }
+        }
+
+        private Address BlockStartAddress(RtlBlock b)
+        {
+            if (!truncatedBlocks.TryGetValue(b, out var startAddr))
+                startAddr = b.Address;
+            return startAddr;
         }
 
         private bool Remaining(Tuple<RtlBlock, RtlBlock> c)
@@ -302,7 +359,9 @@ namespace Reko.Scanning
             var nodes = blocks.Nodes;
             return 
                 nodes.Contains(c.Item1) &&
-                nodes.Contains(c.Item2);
+                nodes.Contains(c.Item2) &&
+                c.Item1.GetEndAddress() > BlockStartAddress(c.Item2) &&
+                BlockStartAddress(c.Item1) < c.Item2.GetEndAddress();
         }
         
 
