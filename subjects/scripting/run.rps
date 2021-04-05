@@ -1,13 +1,13 @@
-reko.project.programs.open('program.dll')
-reko.project.programs['program.dll'].procedures[0x12345678] = 'proc_name'
-reko.project.save('project.dcproj')
-reko.project.close()
-reko.project.open('project.dcproj')
-reko.project.programs.open('program.exe')
-# Add module to project but do not execute it. It is just library of functions
-reko.project.scripts.open('module_name.rps')
-module_name.some_function()
-reko.project.decompile()
-reko.project.save()
-# Execute script but do not add it to project
-reko.execute('script.rps')
+def run(reko):
+    reko.project.programs.open('program.dll')
+    reko.project.programs['program.dll'].procedures[0x12345678] = 'proc_name'
+    reko.project.save('project.dcproj')
+    reko.project.close()
+    reko.project.open('project.dcproj')
+    reko.project.programs.open('program.exe')
+    # Add module to project
+    reko.project.scripts.open('module_name.rps')
+    # Call function from added module
+    module_name.some_function()
+    reko.project.decompile()
+    reko.project.save()
