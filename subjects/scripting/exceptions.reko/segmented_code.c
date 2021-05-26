@@ -7,7 +7,7 @@
 // 1000:0020: void entry()
 void entry()
 {
-	// AttributeError: 'RekoEvents' object has no attribute 'undefined_event'
+	// SystemError: Object reference not set to an instance of an object.
 	// AttributeError: Unknown event: 'undefined_event'
 	// RecursionError: maximum recursion depth exceeded
 	// KeyError: 1000:0010
